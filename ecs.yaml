@@ -89,8 +89,6 @@ Resources:
               Value: !Ref ApplicationEnvironment
             - Name: PORT
               Value: '8080'
-            - Name: SL_API_URL
-              Value: '{{resolve:secretsmanager:CFT-Secrets:SecretString:api-protocol}}://{{resolve:secretsmanager:CFT-Secrets:SecretString:api-url}}'
           Essential: true
           Memory: 512
           LogConfiguration:
