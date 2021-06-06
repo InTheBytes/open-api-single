@@ -127,6 +127,7 @@ Resources:
         - Field: path-pattern
           Values:
             - /swagger*
+            - /v3/api-docs/swagger-config
       Actions:
         - Type: forward
           TargetGroupArn: !Ref TargetGroup
