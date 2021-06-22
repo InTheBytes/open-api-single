@@ -46,8 +46,10 @@ pipeline {
             }
         }
         stage('Deploy') {
-            echo 'Updating k8s image..'
-            sh './kubectl set image deployment/openapi-service openapi-service=241465518750.dkr.ecr.us-east-2.amazonaws.com/openapi:latest'
+            steps {
+                echo 'Updating k8s image..'
+                sh './kubectl set image deployment/openapi-service openapi-service=241465518750.dkr.ecr.us-east-2.amazonaws.com/openapi:latest'
+            }
         }
     }
     post {
