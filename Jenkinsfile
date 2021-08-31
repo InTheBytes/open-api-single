@@ -47,9 +47,9 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Updating k8s image..'
-                sh '~/kubectl set image deployment/openapi-deployment openapi-service=241465518750.dkr.ecr.us-east-2.amazonaws.com/openapi:latest'
-            }
+                echo 'Deploying cloudformation..'
+                sh "aws cloudformation deploy --stack-name StackLunchOpenApi --template-file ./ecs.yaml --parameter-overrides ApplicationName=OpenApi ApplicationEnvironment=dev ECRRepositoryUri=241465518750.dkr.ecr.us-east-2.amazonaws.com/openapi:latest --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM --region us-east-2"
+        	}
         }
     }
     post {
